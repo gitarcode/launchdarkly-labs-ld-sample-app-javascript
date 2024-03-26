@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Feature Flags!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-tooltip@3.0.2/dist/css/bulma-tooltip.min.css">
+    <style type="text/css">
+        html {
+            background-color: black;
+        }
+
+        .dogphoto {
+            text-align: center;
+            margin: auto;
+            width: 400px;
+        }
+
+        .header {
+            color: #EFEFEF;
+            text-align: center;
+        }
+
+        #dogphoto_image {
+            width: 400px;
+        }
+
+        .progressbar {
+            float: left;
+            width: 100px;
+            height: 20px;
+            background-color: #000000;
+            text-align: center;
+        }
+
+        .modalBox {
+            display: block;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            min-height: 100vh;
+            min-width: 100vw;
+            background-color: rgba(255, 255, 255, .7);
+            z-index: 1;
+        }
+
+        .boxUserName {
+            background-color: white;
+            border-radius: 10px;
+            height: 100px;
+            width: 250px;
+            box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            overflow: hidden;
+        }
+
+        .titleBar {
+            height: 25px;
+            background-color: black;
+            padding: 2px;
+            font-size: 12px;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .inputBox {
+            font-size: 12px;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .buttonLogin {
+            margin: 10px;
+        }
+
+        input {
+            font-size: 12px;
+        }
+    </style>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" crossorigin="anonymous"></script>
+    <script crossorigin="anonymous" src="https://cdn.jsDelivr.net/npm/launchdarkly-js-client-sdk@3.1.1"></script>
+    <script src="{{ url_for('static', filename='keys.js') }}"></script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</head>
+
+<body>
+    <div id="pagetitle" class="hero title header">LaunchDogly Photo App!</div>
+    <div class="dogphoto">
+        <div style="padding-top: 10px; padding-bottom: 10px;">
+            <div id="timebox_1" class="progressbar"></div>
+            <div id="timebox_2" class="progressbar"></div>
+            <div id="timebox_3" class="progressbar"></div>
+            <div id="timebox_4" class="progressbar"></div>
+            <div style="clear: both;"></div>
+        </div>
+        <div id="myusername" style="text-align:center;font-weight:bold; font-size:16px;color:white;"></div>
+        <img id="dogphoto_image" />
+    </div>
+    <div class="modalBox" id="myModalBox">
+        <div class="boxUserName">
+            <div class="titleBar">
+                Enter a username
+            </div>
+            <div class="inputBox">
+                <div>
+                    <label for="username_box">Username </label><input id="username_box" type="text" />
+                </div>
+                <div class="buttonLogin"><input type="button" value="Login" onclick="getUserName();" /></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
